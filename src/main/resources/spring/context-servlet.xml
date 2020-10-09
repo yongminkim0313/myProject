@@ -10,6 +10,8 @@
 
 	<annotation-driven />
 
+	<context:annotation-config/>
+
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean
