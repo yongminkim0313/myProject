@@ -24,9 +24,9 @@ public class MainController {
 		return "index";
 	}
 
-	@RequestMapping("/test")
+	@RequestMapping("/aaaa")
 	@ResponseBody
-	public Map<String, Object> test(@RequestParam Map<String, Object> reqMap) {
+	public Map<String, Object> aaaa(@RequestParam Map<String, Object> reqMap) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("result", mainService.selectStudentAttend(reqMap));
 		return map;
