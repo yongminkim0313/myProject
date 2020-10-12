@@ -3,7 +3,7 @@
 
 <mapper namespace="com.my.main.dao.MainDao">
 
-	<select id="selectStudentAttend" resultType="Map">
+	<select id="selectStudentAttend" resultType="CamelMap">
 	  	SELECT ID, AT FROM T_ATTEND_DATA
 	</select>
 </mapper>
