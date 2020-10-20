@@ -12,7 +12,7 @@
 
 	<context:annotation-config/>
 
-	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
 	<beans:bean
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">

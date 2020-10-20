@@ -18,10 +18,13 @@ public class MainController {
 	private MainService mainService;
 
 	@RequestMapping("/")
-	public String main() {
-		System.out.println("123123");
-
+	public String index() {
 		return "index";
+	}
+
+	@RequestMapping("/login/loginPage")
+	public String login() {
+		return "login/loginPage";
 	}
 
 	@RequestMapping("/aaaa")
