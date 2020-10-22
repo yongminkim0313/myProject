@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- ALL > TRACE > DEBUG > INFO > WARN > ERROR > FATAL > OFF -->
 <configuration status="WARN">
 	<appenders>
 		<Console name="console" target="SYSTEM_OUT">
@@ -21,27 +22,26 @@
 	<loggers>
 
 		<!-- 모든 로그는 dubug레벨 이상일때만 찍고 -->
-		<root level="debug" additivity="false">
+		<root level="DEBUG" additivity="false">
 			<appender-ref ref="console" />
 			<appender-ref ref="file" />
 		</root>
 
 		<!-- 로그많이 찍어대는 요놈들은 warn수준이상만 찍겠다. -->
-
-		<logger name="org.springframework" level="warn"
+		<logger name="org.springframework" level="WARN"
 			additivity="false">
 			<appender-ref ref="console" />
 			<appender-ref ref="file" />
 		</logger>
 
-		<logger name="org.apache.http" level="warn" additivity="false">
+		<logger name="org.apache.http" level="WARN" additivity="false">
 			<appender-ref ref="console" />
 			<appender-ref ref="file" />
 		</logger>
 
 
 		<!-- 내패키지는 무조건 찍자 -->
-		<logger name="com.my.main" level="trace" additivity="false">
+		<logger name="com.my.main" level="DEBUG" additivity="false">
 			<appender-ref ref="console" />
 			<appender-ref ref="file" />
 		</logger>

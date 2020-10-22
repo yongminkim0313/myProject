@@ -10,39 +10,51 @@
 
 
 	<bean id="userAuthProvider" class="com.my.util.CustomAuthenticationProvider"/>
+	<bean id="userService" class="com.my.util.SecurityUserService"/>
+	
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<constructor-arg name="strength" value="256">
+		</constructor-arg>
+	</bean>
+
 
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/login/**" access="permitAll" />
 		<security:intercept-url pattern="/resources/**" access="permitAll" />
 		<security:intercept-url pattern="/**" access="hasRole('USER')" />
 		<!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
-		<security:intercept-url pattern="/login/loginPage" access="isAnonymous()" />
+		<security:intercept-url pattern="/login/loginPage" access="isAnonymous()" /> 
 		<security:form-login login-page="/login/loginPage" username-parameter="userId" password-parameter="userPwd" default-target-url="/" authentication-failure-url="/login/loginPage" />
 		<security:logout logout-url="/logout" logout-success-url="/login/loginPage" />
 	</security:http>
 	<security:authentication-manager>
-<!-- 		<security:authentication-provider ref="userAuthProvider"/> -->
+		<security:authentication-provider ref="userAuthProvider"/>
 
-		<security:authentication-provider>
-			<!-- <security:user-service> -->
-			<!-- <security:user name="root" authorities="ROLE_USER" password="1" /> -->
-			<!-- </security:user-service> -->
-			<security:password-encoder hash="sha-256">
-				<security:salt-source user-property="userName" />
-			</security:password-encoder>
+		<!-- <security:authentication-provider> -->
+		<!-- <security:user-service> -->
+		<!-- <security:user name="root" authorities="ROLE_USER" password="1" /> -->
+		<!-- </security:user-service> -->
+		<!-- <security:password-encoder hash="sha-256"> -->
+		<!-- <security:salt-source user-property="userName" /> -->
+		<!-- </security:password-encoder> -->
 
-			<security:jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="
-				SELECT LOGIN_ID AS userName
-					,USER_PWD AS password
-					,SECSN_YN AS enabled 
-				FROM T_CM_USER 
-					WHERE LOGIN_ID = ?"
-				authorities-by-username-query="
-				SELECT LOGIN_ID AS userName
-					,'USER' AS authority 
-				FROM T_CM_USER 
-					WHERE LOGIN_ID = ?" />
+		<security:authentication-provider user-service-ref="userService">
+			<security:password-encoder ref="passwordEncoder" />
 		</security:authentication-provider>
+
+
+		<!-- <security:jdbc-user-service data-source-ref="dataSource" -->
+		<!-- users-by-username-query=" -->
+		<!-- SELECT LOGIN_ID AS userName -->
+		<!-- ,USER_PWD AS password -->
+		<!-- ,SECSN_YN AS enabled -->
+		<!-- FROM T_CM_USER -->
+		<!-- WHERE LOGIN_ID = ?" -->
+		<!-- authorities-by-username-query=" -->
+		<!-- SELECT LOGIN_ID AS userName -->
+		<!-- ,'USER' AS authority -->
+		<!-- FROM T_CM_USER -->
+		<!-- WHERE LOGIN_ID = ?" /> -->
+		<!-- </security:authentication-provider> -->
 	</security:authentication-manager>
 </beans>

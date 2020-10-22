@@ -10,24 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Coming Soon - Start Bootstrap Theme</title>
-  <!-- Bootstrap core CSS -->
-  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template -->
-  <link href="/resources/css/coming-soon.min.css" rel="stylesheet">
 </head>
-<script type="text/javascript">
-
-	function gogo(){
-	    $("#frm").attr("action", "/login/join.co");
-	    $("#frm").submit();
-	};
-
-
-</script>
 <body>
 	<!--   <div class="overlay"></div> -->
 <!-- 	  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"> -->
@@ -56,33 +39,6 @@
 		      </div>
 		    </div>
 		  </div>
-		
-<!-- 		  <div class="social-icons"> -->
-<!-- 		    <ul class="list-unstyled text-center mb-0"> -->
-<!-- 		      <li class="list-unstyled-item"> -->
-<!-- 		        <a href="javascript:gogo();"> -->
-<!-- 		          <i class="fab fa-twitter"></i> -->
-<!-- 		        </a> -->
-<!-- 		      </li> -->
-<!-- 		      <li class="list-unstyled-item"> -->
-<!-- 		        <a id=""> -->
-<!-- 		          <i class="fab fa-facebook-f"></i> -->
-<!-- 		        </a> -->
-<!-- 		      </li> -->
-<!-- 		      <li class="list-unstyled-item"> -->
-<!-- 		        <a id=""> -->
-<!-- 		          <i class="fab fa-instagram"></i> -->
-<!-- 		        </a> -->
-<!-- 		      </li> -->
-<!-- 		    </ul> -->
-<!-- 		  </div> -->
-		
-	  <!-- Bootstrap core JavaScript -->
-<!-- 	  <script src="/resources/vendor/jquery/jquery.min.js"></script> -->
-<!-- 	  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-	
-<!-- 	  <!-- Custom scripts for this template --> -->
-<!-- 	  <script src="/resources/js/coming-soon.min.js"></script> -->
 	
 </body>
 
