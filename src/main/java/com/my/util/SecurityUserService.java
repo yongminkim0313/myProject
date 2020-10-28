@@ -14,7 +14,7 @@ public class SecurityUserService implements UserDetailsService {
 	public SecurityUserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-		SecurityUserDetail user = new SecurityUserDetail("aa", "1", authorities);
+		SecurityUserDetail user = new SecurityUserDetail(username, "1", authorities);
 		System.out.println(user);
 		return user;
 	}
