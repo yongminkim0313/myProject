@@ -9,17 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<script src="/resources/js/sockjs.js"></script>
 <script src="/resources/js/jquery.js"></script>
+<script src="/resources/js/sockjs.js"></script>
 <script src="/resources/js/stomp.min.js"></script>
 <script>
 
 
-var sock = new SockJS("/websockethandler");
-var client = Stomp.over(sock); // 1. SockJS를 내부에 들고 있는 client를 내어준다.
-
 var roomId = '달찐이'
-// 2. connection이 맺어지면 실행된다.
+// var sock = new SockJS("/websockethandler");
+// var sock = new SockJS("/chat");
+var sock = new WebSocket("ws://localhost:8080/chat")
+	// 1. SockJS를 내부에 들고 있는 client를 내어준다.
+var client = Stomp.over(sock); 
+	// 2. connection이 맺어지면 실행된다.
 client.connect({}, function () {
 	// 3. send(path, header, message)로 메시지를 보낼 수 있다.
 	client.send('/publish/chat/join', {}, JSON.stringify({chatRoomId: roomId, writer: '용민'})); 

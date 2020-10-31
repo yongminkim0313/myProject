@@ -1,4 +1,4 @@
-package com.my.util;
+package com.my.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,17 +13,23 @@ public class SecurityUserDetail implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
+	private String nickname;
 	private Collection<? extends GrantedAuthority> authority;
 
 	public Collection<? extends GrantedAuthority> getAuthority() {
 		return authority;
 	}
 
-	public SecurityUserDetail(String username, String password, Collection<? extends GrantedAuthority> authority) {
+	public SecurityUserDetail() {
+	}
+
+	public SecurityUserDetail(String username, String password, Collection<? extends GrantedAuthority> authority,
+			String nickname) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.authority = authority;
+		this.nickname = nickname;
 	}
 
 	public void setAuthority(Collection<? extends GrantedAuthority> authority) {
@@ -86,9 +92,18 @@ public class SecurityUserDetail implements UserDetails {
 		return true;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	@Override
 	public String toString() {
-		return "SecurityUserDetail [username=" + username + ", password=" + password + ", authority=" + authority + "]";
+		return "SecurityUserDetail [username=" + username + ", password=" + password + ", nickname=" + nickname
+				+ ", authority=" + authority + "]";
 	}
 
 }

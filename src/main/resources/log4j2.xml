@@ -28,7 +28,7 @@
 		</root>
 
 		<!-- 로그많이 찍어대는 요놈들은 warn수준이상만 찍겠다. -->
-		<logger name="org.springframework" level="DEBUG"
+		<logger name="org.springframework" level="WARN"
 			additivity="false">
 			<appender-ref ref="console" />
 			<appender-ref ref="file" />

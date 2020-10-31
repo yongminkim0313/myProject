@@ -23,11 +23,21 @@
 	<context:component-scan base-package="com.my.main"></context:component-scan>
 
 	
-	<beans:bean id="simMessage" class="com.my.websocket.ChatMessageController"/>
+	<beans:bean class="com.my.websocket.ChatMessageController"/>
+	
 	<websocket:message-broker application-destination-prefix="/publish">
 		<websocket:stomp-endpoint path="/websockethandler" >
-			<websocket:sockjs />
+<!-- 			<websocket:sockjs /> -->
 		</websocket:stomp-endpoint>
 		<websocket:simple-broker prefix="/subscribe" />
 	</websocket:message-broker>
+	
+	<beans:bean id="chatHandler" class="com.my.websocket.ChatHandler"/>
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler" path="/chat"/>
+		<websocket:handshake-interceptors>
+			<beans:bean class="com.my.util.HandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+<!-- 		<websocket:sockjs/> -->
+	</websocket:handlers>
 </beans:beans>

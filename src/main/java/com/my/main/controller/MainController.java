@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.main.service.MainService;
+import com.my.security.SecurityUserDetail;
 
 @Controller
 public class MainController {
@@ -18,10 +20,17 @@ public class MainController {
 	private MainService mainService;
 
 	@RequestMapping("/")
-	public String index() {
-		System.out.println();
+	public String index(Authentication authentication) {
+		SecurityUserDetail user = (SecurityUserDetail) authentication.getPrincipal();
+		System.out.println(user);
 		return "index";
 	}
+
+//	@RequestMapping("/")
+//	public String index(@AuthenticationPrincipal SecurityUserDetail user) {
+//		System.out.println(user);
+//		return "index";
+//	}
 
 	@RequestMapping("/login/loginPage")
 	public String login() {
