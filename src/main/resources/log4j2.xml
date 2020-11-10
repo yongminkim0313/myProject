@@ -28,13 +28,13 @@
 		</root>
 
 		<!-- 로그많이 찍어대는 요놈들은 warn수준이상만 찍겠다. -->
-		<logger name="org.springframework" level="WARN"
+		<logger name="org.springframework" level="ALL"
 			additivity="false">
 			<appender-ref ref="console" />
 			<appender-ref ref="file" />
 		</logger>
 
-		<logger name="org.apache.http" level="DEBUG" additivity="false">
+		<logger name="org.apache.http" level="ALL" additivity="false">
 			<appender-ref ref="console" />
 			<appender-ref ref="file" />
 		</logger>

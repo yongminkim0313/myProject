@@ -24,10 +24,9 @@
 
 	
 	<beans:bean class="com.my.websocket.ChatMessageController"/>
-	
 	<websocket:message-broker application-destination-prefix="/publish">
 		<websocket:stomp-endpoint path="/websockethandler" >
-<!-- 			<websocket:sockjs /> -->
+			<websocket:sockjs />
 		</websocket:stomp-endpoint>
 		<websocket:simple-broker prefix="/subscribe" />
 	</websocket:message-broker>

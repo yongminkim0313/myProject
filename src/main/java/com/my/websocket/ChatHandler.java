@@ -16,45 +16,27 @@ public class ChatHandler extends TextWebSocketHandler {
 	@Override
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
 		// TODO Auto-generated method stub
-		String userNickName = (String) session.getHandshakeAttributes().get("userNickName");
-		System.out.println(userNickName + "¥‘¿Ã ∏ﬁºº¡ˆ∏¶ ∫∏≥¿¥œ¥Ÿ.");
 		System.out.println("@@@@@@@@@@@@@@@@@@@handleMessage@@@@@@@@@@@@@@@@@@@@@");
 		super.handleMessage(session, message);
 	}
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		// TODO Auto-generated method stub
-		String userNickName = (String) session.getHandshakeAttributes().get("userNickName");
-		System.out.println(userNickName + "¥‘¿Ã ¿‘¿Â«œºÃΩ¿¥œ¥Ÿ.");
-		sessionUsers.put(userNickName, session);
 		System.out.println("@@@@@@@@@@@@@@@@@@@afterConnectionEstablished@@@@@@@@@@@@@@@@@@@@@");
-		super.afterConnectionEstablished(session);
+		System.out.println(session.getId() + " ø¨∞· µ .");
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		// TODO Auto-generated method stub
-		String userNickName = (String) session.getHandshakeAttributes().get("userNickName");
-		System.out.println(userNickName + "¥‘¿Ã ≥™∞°ºÃΩ¿¥œ¥Ÿ.");
-		sessionUsers.remove(userNickName);
 		System.out.println("@@@@@@@@@@@@@@@@@@@afterConnectionClosed@@@@@@@@@@@@@@@@@@@@@");
-		super.afterConnectionClosed(session, status);
+		System.out.println(session.getId() + " ø¨∞· ≤˜±Ë.");
 	}
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		// TODO Auto-generated method stub
-		String userNickName = (String) session.getHandshakeAttributes().get("userNickName");
-		System.out.println(userNickName + "¥‘¿Ã ∏ﬁºº¡ˆ∏¶ ∫∏≥¿¥œ¥Ÿ.");
-
-		String payload = message.getPayload();
-		System.out.println("payload : " + payload);
-
-		session.sendMessage(message);
-
 		System.out.println("@@@@@@@@@@@@@@@@@@@handleTextMessage@@@@@@@@@@@@@@@@@@@@@");
-//		super.handleTextMessage(session, message);
+		System.out.println(session.getId() + " ∑Œ∫Œ≈Õ [" + message.getPayload() + "] πﬁ¿Ω");
+		session.sendMessage(new TextMessage("echo : " + message.getPayload()));
 	}
 
 	@Override

@@ -34,10 +34,6 @@
 							+ '</h1>')
 		});
 	});
-
-	function sendMessage(){
-		client.send('/publish/chat/message', {}, JSON.stringify({chatRoomId: '달찐이', message: '한번해본거지라~~', writer: '민혁'}));
-	}
 </script>
 <title>Coming Soon - Start Bootstrap Theme</title>
 </head>
@@ -55,7 +51,6 @@
 						<form action="/logout" method="post" id="frm" name="frm">
 							<sec:authentication property="principal" />
 							<input type="submit" value="LOGOUT!!" />
-							<input type="button" onclick="sendMessage();" value="sendMessage" />
 							<sec:csrfInput />
 						</form>
 					</div>
